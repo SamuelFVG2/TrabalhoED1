@@ -1,11 +1,17 @@
 #include <iostream>
 
 #include "classes/date/date.h"
+#include "classes/person/person.h"
 
 int main() {
     Date date(31, 12, 2024);
+    Person person("Samuel");
+    person.addDate(Date(10, 5, 2000));
+    person.addDate(Date(25, 12, 2024));
+    person.addDate(Date(1, 1, 1999));
 
     std::cout << "Date 1: " << date.getDateString() << std::endl;
+    std::cout << "Person 1: " << person.getPersonString() << std::endl;
     
     return 0;
 }
