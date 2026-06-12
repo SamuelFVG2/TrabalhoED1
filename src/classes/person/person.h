@@ -22,6 +22,8 @@ public:
     void addDate(Date date);
 
     std::string getPersonString();
+
+    void sortDates();
 };
 
 #endif

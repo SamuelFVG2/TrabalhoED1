@@ -19,14 +19,14 @@ Person getPersonFromLine(std::string line) {
 
     for (int i = 0; i < (int)numbers.size(); i += 6) {
         std::string dateString = numbers.substr(i, 6);
-
+        
         int day   = std::stoi(dateString.substr(0, 2));
         int month = std::stoi(dateString.substr(2, 2));
         int year  = std::stoi(dateString.substr(4, 2));
 
         person.addDate(Date(day, month, year));
     }
-
+    
     return person;
 }
 
@@ -38,6 +38,7 @@ int main() {
 
     while (std::getline(file, line)) {
         Person person = getPersonFromLine(line);
+        person.sortDates();
         persons.push_back(person);
     }
     std::cout << persons.size() << std::endl;
