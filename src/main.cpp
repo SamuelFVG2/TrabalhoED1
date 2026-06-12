@@ -3,19 +3,43 @@
 #include "classes/date/date.h"
 #include "classes/person/person.h"
 
-int main() {
-    Date date(31, 12, 2024);
-    Person person("Samuel");
-    person.addDate(Date(10, 5, 2000));
-    person.addDate(Date(25, 12, 2024));
-    person.addDate(Date(1, 1, 1999));
+Person getPersonFromLine(std::string line)
+{
+    std::string name = "", numbers = "";
 
-    std::cout << "Date 1: " << date.getDateString() << std::endl;
-    std::cout << "Person 1: " << person.getPersonString() << std::endl;
-    
-    return 0;
+    for (char c : line) {
+        if (isdigit(c)) {
+            numbers += c;
+        }
+        else {
+            name += c;
+        }
+    }
+
+    Person person(name);
+
+    for (int i = 0; i < numbers.size(); i += 6) {
+        std::string dateString = numbers.substr(i, 6);
+
+        int day = std::stoi(dateString.substr(0, 2)), month = std::stoi(dateString.substr(2, 2)), year = std::stoi(dateString.substr(4, 2));
+
+        person.addDate(
+            Date(day, month, year)
+        );
+    }
+
+    return person;
 }
 
+int main()
+{
+    Person person =
+        getPersonFromLine("JOAQUIM310799060605150280");
+
+    std::cout << person.getPersonString();
+
+    return 0;
+}
 // #include <iostream>
 // #include <fstream>
 // #include <sstream>
