@@ -22,8 +22,14 @@ Person getPersonFromLine(std::string line) {
         
         int day   = std::stoi(dateString.substr(0, 2));
         int month = std::stoi(dateString.substr(2, 2));
-        int year  = std::stoi(dateString.substr(4, 2));
+        int year = std::stoi(dateString.substr(4, 2));
 
+        if (year <= 26) {
+            year += 2000;
+        } else {
+            year += 1900;
+        }
+        
         person.addDate(Date(day, month, year));
     }
     
