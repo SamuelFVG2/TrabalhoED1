@@ -25,7 +25,7 @@ std::string Person::getPersonString() {
     std::string result = this->name + "  ~  ";
 
     for (Date date : this->dates) {
-        result += date.getDateString() + " - ";
+        result += date.getDateString() + " ";
     }
 
     return result;

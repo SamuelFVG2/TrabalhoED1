@@ -29,7 +29,6 @@ Person getPersonFromLine(std::string line) {
         } else {
             year += 1900;
         }
-        
         person.addDate(Date(day, month, year));
     }
     
@@ -47,7 +46,21 @@ int main() {
         person.sortDates();
         persons.push_back(person);
     }
-    std::cout << persons.size() << std::endl;
+
+
+    int n = persons.size();
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+
+            if (persons[j].getName() > persons[j + 1].getName()) {
+
+                Person temp = persons[j];
+                persons[j] = persons[j + 1];
+                persons[j + 1] = temp;
+            }
+        }
+    }
     for (int i = 0; i<persons.size();i++){
         std::cout << persons[i].getPersonString() << std::endl;
     } 
